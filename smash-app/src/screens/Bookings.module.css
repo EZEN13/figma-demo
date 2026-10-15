@@ -1,0 +1,198 @@
+.page {
+  padding: var(--space-16) var(--screen-pad) var(--tabbar-space);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.ticketBtn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--radius-20);
+}
+
+.ticket :global(*) {
+  pointer-events: none;
+}
+
+.clubRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.club {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.when {
+  flex: none;
+  padding: var(--space-4) 10px;
+  border-radius: var(--radius-8);
+  background: var(--ink);
+  color: var(--chalk);
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+}
+
+.seatsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.seats {
+  display: flex;
+  gap: 6px;
+}
+
+.count {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.month {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  margin-bottom: var(--space-4);
+}
+
+.pastRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-16);
+  background: var(--paper);
+}
+
+.pastMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  text-align: left;
+}
+
+.pastDate {
+  width: 40px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pastDay {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
+}
+
+.pastMon {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.pastText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pastClub {
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pastRes {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.win {
+  color: var(--ink);
+}
+
+.repeat {
+  flex: none;
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+  display: grid;
+  place-items: center;
+}
+
+/* пустое состояние: билет-контур пунктиром */
+.ghostTicket {
+  display: block;
+  width: 200px;
+  height: 108px;
+  border-radius: var(--radius-20);
+  border: 2px dashed var(--line);
+  position: relative;
+}
+
+.ghostTicket::before,
+.ghostTicket::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--chalk);
+  border: 2px dashed var(--line);
+}
+
+.ghostTicket::before {
+  left: -14px;
+}
+
+.ghostTicket::after {
+  right: -14px;
+}

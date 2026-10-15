@@ -20,6 +20,7 @@ import { useClosingConfirmation } from '../telegram/useHeaderColor';
 import { haptic } from '../telegram/haptics';
 import { dateMedium, hhmm, isValidISO, rub } from '../lib/format';
 import { useGoBack } from '../lib/nav';
+import { TAKEN_FLAG } from './Court';
 import s from './Pay.module.css';
 
 interface Draft {
@@ -119,7 +120,8 @@ function PayView({ draft }: { draft: Draft }) {
       setBusy(false);
       haptic.error();
       if (e instanceof ApiError && e.code === 'taken') {
-        toast('Слот только что заняли. Выберите другое время');
+        if (m) toast('Место в матче только что заняли');
+        else sessionStorage.setItem(TAKEN_FLAG, '1');
         goBack(backTo);
       } else {
         toast('Нет сети, оплата не прошла', { label: 'Повторить', onClick: submit });

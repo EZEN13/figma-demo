@@ -1,0 +1,202 @@
+.page {
+  padding: var(--space-12) var(--screen-pad) var(--space-32);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.bars {
+  flex: 1;
+  display: flex;
+  gap: var(--space-8);
+}
+
+.bar,
+.barOn {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.barOn {
+  background: var(--ink);
+}
+
+.step {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.sub {
+  color: var(--muted);
+}
+
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.level {
+  width: 100%;
+  padding: var(--space-16);
+  border-radius: var(--radius-16);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  text-align: left;
+}
+
+.levelOn {
+  background: var(--ink);
+  color: var(--chalk);
+  box-shadow: none;
+}
+
+.levelRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.levelText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.levelTitle {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+}
+
+.levelDesc {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.levelOn .levelDesc {
+  color: var(--chalk-65);
+}
+
+.levelRange {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.levelOn .levelRange {
+  color: var(--ball);
+}
+
+.scale {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.scaleEdge {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk-60);
+}
+
+.tick,
+.tickOn {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--chalk-18);
+}
+
+.tickOn {
+  background: var(--ball);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.clubs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.h {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+}
+
+.clubRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: 60px;
+  border-bottom: 1px solid var(--line);
+}
+
+.clubText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.clubName {
+  font-weight: 700;
+}
+
+.clubSub {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.heart {
+  width: var(--tap);
+  height: var(--tap);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  margin-right: -10px;
+}
+
+.footer {
+  flex: none;
+  padding: var(--space-16) var(--screen-pad) var(--bar-pad-bottom);
+  background: var(--chalk);
+  border-top: 1px solid var(--line);
+}

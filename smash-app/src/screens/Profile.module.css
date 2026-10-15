@@ -1,0 +1,267 @@
+.hero {
+  background: var(--ink);
+  color: var(--chalk);
+  padding: var(--space-12) var(--screen-pad) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.topRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: calc(-1 * var(--space-16));
+}
+
+.round {
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: var(--radius-full);
+  background: var(--chalk-10);
+  display: grid;
+  place-items: center;
+}
+
+.me {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.avatar {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background: var(--paper);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-title);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
+}
+
+.since {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk-65);
+}
+
+.ratingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: var(--space-12);
+}
+
+.ratingVal {
+  display: flex;
+  flex-direction: column;
+}
+
+.ratingLabel {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk-65);
+}
+
+.rating {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: 48px;
+  letter-spacing: var(--ls-display);
+  color: var(--ball);
+}
+
+.growth {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-full);
+  background: var(--chalk-12);
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  margin-bottom: var(--space-8);
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.months {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk);
+  opacity: 0.55;
+}
+
+.content {
+  padding: var(--space-24) var(--screen-pad) var(--tabbar-space);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.stats {
+  margin: 0;
+  display: flex;
+  gap: var(--space-8);
+}
+
+.stat {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: var(--space-16);
+  border-radius: var(--radius-16);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.statV {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
+  white-space: nowrap;
+}
+
+.statK {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.h {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+}
+
+.all {
+  min-height: var(--tap);
+  margin: -10px 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-16);
+  background: var(--paper);
+  text-align: left;
+}
+
+.gameText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.gameRes {
+  font-weight: 700;
+}
+
+.gameSub {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.delta {
+  font-weight: 700;
+}
+
+.minus {
+  color: var(--muted);
+}
+
+.settings li + li .setRow {
+  border-top: 1px solid var(--line);
+}
+
+.setRow {
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  text-align: left;
+  padding: var(--space-8) 0;
+}
+
+.setText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.setTitle {
+  font-weight: 700;
+}
+
+.setSub {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.chev {
+  color: var(--muted);
+}

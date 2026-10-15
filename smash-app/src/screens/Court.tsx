@@ -24,6 +24,9 @@ import { EASE } from '../lib/motion';
 import { useErrorToast } from './Home';
 import s from './Court.module.css';
 
+/** Оплата ставит флаг, если слот «только что заняли» — корт скажет об этом сам. */
+export const TAKEN_FLAG = 'smash:taken';
+
 const GROUPS: [Exclude<TimeOfDay, 'any'>, string][] = [
   ['morning', 'Утро'],
   ['day', 'День'],
@@ -85,9 +88,14 @@ function CourtView({ courtId }: { courtId: string }) {
     setParams(next, { replace: true });
   };
 
-  // выбранный слот больше недоступен (заняли, прошёл) — сбрасываем молча
+  // выбранный слот недоступен (заняли, прошёл, «повторить» на занятое время) — сбрасываем и говорим об этом
   useEffect(() => {
-    if (q.data && slot !== null && !starts.some((x) => x.start === slot && x.free)) update({ slot: null });
+    if (q.data && slot !== null && !starts.some((x) => x.start === slot && x.free)) {
+      const justTaken = sessionStorage.getItem(TAKEN_FLAG);
+      sessionStorage.removeItem(TAKEN_FLAG);
+      toast(justTaken ? 'Слот только что заняли. Выберите другое время' : `${hhmm(slot)} на эту дату занято, выберите другое время`);
+      update({ slot: null });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q.data]);
 

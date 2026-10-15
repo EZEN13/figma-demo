@@ -1,0 +1,109 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 350 / 145;
+}
+
+.big {
+  aspect-ratio: 350 / 175;
+}
+
+.court {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.seat {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.av {
+  position: absolute;
+  left: -22px;
+  top: -22px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--ink);
+  color: var(--chalk);
+  box-shadow: inset 0 0 0 2px var(--chalk);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: 1;
+}
+
+.big .av {
+  left: -26px;
+  top: -26px;
+  width: 52px;
+  height: 52px;
+}
+
+.open {
+  background: var(--ink);
+  color: var(--chalk-70);
+  box-shadow: inset 0 0 0 1.5px var(--chalk-40);
+}
+
+.ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: var(--radius-full);
+  border: 2px dashed var(--ball);
+  animation: spin 12s linear infinite;
+}
+
+.label {
+  position: absolute;
+  top: -20px;
+  left: 30px;
+  padding: 2px 4px;
+  border-radius: var(--radius-8);
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.right .label {
+  left: auto;
+  right: 30px;
+  align-items: flex-end;
+}
+
+.name,
+.yours {
+  font-weight: 700;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk);
+}
+
+.yours {
+  color: var(--ball);
+}
+
+.lvl {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk-65);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+  }
+}
