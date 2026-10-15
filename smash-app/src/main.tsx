@@ -15,8 +15,10 @@ import './styles/tokens.css';
 import './styles/global.css';
 import { initTelegram } from './telegram/tg';
 import { App } from './App';
+import { ensureFreshBuild } from './lib/freshness';
 
 initTelegram();
+ensureFreshBuild();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
