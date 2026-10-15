@@ -94,9 +94,10 @@
 
 .slotsHead {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-8);
+  gap: var(--space-4) var(--space-8);
 }
 
 .dateBtn {
@@ -109,6 +110,7 @@
   font-size: var(--fs-body-l);
   line-height: var(--lh-body-l);
   text-align: left;
+  white-space: nowrap;
 }
 
 .chev,

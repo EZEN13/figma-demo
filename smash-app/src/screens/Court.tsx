@@ -49,7 +49,7 @@ export function Court() {
     return (
       <Screen top="light" back={() => goBack('/courts')}>
         <EmptyState
-          art={<CourtScheme length={220} width={110} angle={-10} tone="line" />}
+          art={<CourtScheme length={200} width={100} angle={-10} tone="line" />}
           title="Корт не найден"
           text="Возможно, ссылка устарела"
           action={<Button onClick={() => goBack('/courts')}>К списку кортов</Button>}

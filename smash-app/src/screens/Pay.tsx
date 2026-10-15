@@ -75,7 +75,7 @@ function PayInvalid({ onBack }: { onBack: () => void }) {
   return (
     <Screen top="light" back={onBack}>
       <EmptyState
-        art={<CourtScheme length={220} width={110} angle={-10} tone="line" />}
+        art={<CourtScheme length={200} width={100} angle={-10} tone="line" />}
         title="Бронь не собрана"
         text="Выберите корт и время ещё раз"
         action={<Button onClick={onBack}>Назад к выбору</Button>}

@@ -124,7 +124,7 @@ export function Home() {
               q.data.map((hit, i) => <CourtCard key={hit.club.id} hit={hit} date={f.date} variant={i} onOpen={openCourt} />)
             ) : (
               <EmptyState
-                art={<CourtScheme length={220} width={110} angle={-10} tone="line" />}
+                art={<CourtScheme length={200} width={100} angle={-10} tone="line" />}
                 title="Ничего не нашли"
                 text="На эту дату с такими фильтрами свободных кортов нет"
                 action={<Button onClick={() => dispatch({ type: 'resetFilters' })}>Сбросить фильтры</Button>}

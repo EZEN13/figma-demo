@@ -66,7 +66,7 @@ export function BookingSuccess({ mode }: { mode: 'success' | 'view' }) {
     return (
       <Screen top="light" back={back}>
         <EmptyState
-          art={<CourtScheme length={220} width={110} angle={-10} tone="line" />}
+          art={<CourtScheme length={200} width={100} angle={-10} tone="line" />}
           title="Брони нет"
           text="Её отменили или ссылка устарела"
           action={<Button onClick={() => backTo('/bookings')}>Мои брони</Button>}
