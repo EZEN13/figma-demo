@@ -1,0 +1,59 @@
+<!doctype html>
+<!--
+  Обложка мини-приложения для BotFather /newapp: PNG ровно 640 × 360.
+  Рендер: открыть этот файл в Chromium с viewport 640 × 360 и deviceScaleFactor 1,
+  снять скриншот в cover-640x360.png (так и сделано через Playwright).
+  Шрифт берётся из node_modules проекта — перед рендером нужен npm install.
+-->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Unbounded'; font-weight: 900; src: url('../node_modules/@fontsource/unbounded/files/unbounded-cyrillic-900-normal.woff2') format('woff2'); unicode-range: U+0400-04FF; }
+  @font-face { font-family: 'Unbounded'; font-weight: 900; src: url('../node_modules/@fontsource/unbounded/files/unbounded-latin-900-normal.woff2') format('woff2'); unicode-range: U+0000-00FF; }
+  :root { --ink:#111210; --chalk:#F1EEE4; --ball:#CCFF00; }
+  html, body { margin: 0; width: 640px; height: 360px; overflow: hidden; background: var(--ink); }
+  .court { position: absolute; left: 340px; top: 140px; transform: translate(-50%, -50%) rotate(16deg); }
+  .rings { position: absolute; left: 512px; top: 112px; }
+  .rings i { position: absolute; border-radius: 50%; border: 3px solid var(--ball); transform: translate(-50%, -50%); }
+  .ball { position: absolute; left: 429px; top: 60px; transform: translate(-50%, -50%) rotate(32deg); }
+  .logo { position: absolute; left: 44px; bottom: 44px; display: flex; align-items: flex-end; gap: 14px; }
+  .word { font: 900 112px/96px 'Unbounded', sans-serif; letter-spacing: -0.04em; color: var(--chalk); }
+</style>
+</head>
+<body>
+  <!-- схема корта: поле, стекло, линии подачи, сетка -->
+  <svg class="court" width="560" height="280" viewBox="-4 -8 568 296" fill="none">
+    <rect width="560" height="280" fill="#F1EEE4" opacity=".05"/>
+    <g stroke="#F1EEE4" stroke-width="2" opacity=".5">
+      <rect x="1" y="1" width="558" height="278"/>
+      <path d="M85.4 0V280M474.6 0V280M85.4 140H474.6"/>
+    </g>
+    <rect x="278" y="-5" width="4" height="290" rx="2" fill="#F1EEE4" opacity=".7"/>
+  </svg>
+  <!-- удар: кольца от точки касания -->
+  <div class="rings">
+    <i style="width:150px;height:150px;opacity:.55"></i>
+    <i style="width:200px;height:200px;opacity:.2;border-width:2px"></i>
+  </div>
+  <!-- мяч со шлейфом (как в макете: шов ink, три полосы) -->
+  <svg class="ball" width="300" height="96" viewBox="-200 0 300 96" aria-hidden="true">
+    <defs><clipPath id="b"><circle cx="48" cy="48" r="48"/></clipPath></defs>
+    <rect x="-180" y="23" width="150" height="8" rx="4" fill="#CCFF00" opacity=".3"/>
+    <rect x="-200" y="44" width="190" height="8" rx="4" fill="#CCFF00" opacity=".6"/>
+    <rect x="-140" y="65" width="110" height="8" rx="4" fill="#CCFF00" opacity=".3"/>
+    <circle cx="48" cy="48" r="48" fill="#CCFF00"/>
+    <g clip-path="url(#b)" fill="none" stroke="#111210" stroke-width="4">
+      <circle cx="-19.2" cy="48" r="46"/><circle cx="115.2" cy="48" r="46"/>
+    </g>
+  </svg>
+  <div class="logo">
+    <span class="word">смэш</span>
+    <svg width="34" height="34" viewBox="0 0 34 34" style="margin-bottom:14px">
+      <defs><clipPath id="d"><circle cx="17" cy="17" r="17"/></clipPath></defs>
+      <circle cx="17" cy="17" r="17" fill="#CCFF00"/>
+      <g clip-path="url(#d)" fill="none" stroke="#111210" stroke-width="2"><circle cx="-6.8" cy="17" r="16"/><circle cx="40.8" cy="17" r="16"/></g>
+    </svg>
+  </div>
+</body>
+</html>
