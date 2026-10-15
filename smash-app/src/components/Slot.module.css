@@ -1,0 +1,49 @@
+.slot {
+  height: var(--h-slot);
+  min-width: 0;
+  border-radius: var(--radius-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.free {
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.selected {
+  background: var(--ball);
+}
+
+.busy {
+  background: transparent;
+  outline: 1px dashed var(--line);
+  outline-offset: -1px;
+  cursor: default;
+}
+
+.time {
+  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: var(--lh-caption);
+}
+
+.price {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.selected .price {
+  color: var(--ink);
+}
+
+.busy .time {
+  color: var(--muted);
+  text-decoration: line-through;
+}

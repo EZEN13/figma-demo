@@ -1,0 +1,46 @@
+.bar {
+  flex: none;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-16) var(--screen-pad) var(--bar-pad-bottom);
+  background: var(--ink);
+  color: var(--chalk);
+  border-radius: var(--radius-24) var(--radius-24) 0 0;
+  margin-top: calc(-1 * var(--radius-24));
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* сумма в нижней панели — 20, Onest Bold (DESIGN.md) */
+.sum {
+  font-weight: 700;
+  font-size: var(--fs-sum);
+  line-height: var(--lh-sum);
+  color: var(--ball);
+}
+
+.note {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk-65);
+  white-space: nowrap;
+}
+
+.cta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.cta > * {
+  flex: 1;
+}

@@ -1,0 +1,157 @@
+.page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--chalk);
+  padding-bottom: var(--bar-pad-bottom);
+}
+
+.loading {
+  padding: var(--space-24) var(--screen-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.loading > * {
+  background: var(--chalk-10);
+}
+
+.header {
+  padding: var(--space-16) var(--screen-pad) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  display: flex;
+  flex-direction: column;
+}
+
+.display span {
+  display: block;
+}
+
+.accent {
+  color: var(--ball);
+}
+
+.sub {
+  color: var(--chalk-65);
+}
+
+.ticketWrap {
+  padding: var(--space-24) var(--screen-pad) 0;
+}
+
+.clubRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.club {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.courtName {
+  flex: none;
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.players {
+  padding: var(--space-24) var(--screen-pad) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.playersHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
+}
+
+.count {
+  color: var(--chalk-65);
+  font-weight: 500;
+}
+
+.seats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.seat {
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.seatName {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  max-width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.seatOpen {
+  color: var(--chalk-60);
+}
+
+.openBtn {
+  border-radius: var(--radius-full);
+}
+
+.actions {
+  margin-top: auto;
+  padding: var(--space-24) var(--screen-pad) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.cancel {
+  min-height: var(--tap);
+  font-weight: 700;
+  color: var(--chalk);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cancelNote {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--chalk-60);
+}

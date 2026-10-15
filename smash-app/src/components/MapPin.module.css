@@ -1,0 +1,58 @@
+.pin {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+  transition: transform var(--dur-fast) var(--ease);
+  z-index: 1;
+  padding: 6px 0 0;
+}
+
+.pin::before {
+  content: '';
+  position: absolute;
+  inset: -2px -4px -4px;
+}
+
+.on {
+  transform: translate(-50%, -100%) scale(1.1);
+  z-index: 2;
+}
+
+.body {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-8);
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.on .body {
+  background: var(--ball);
+  padding: 8px 12px;
+  font-size: var(--fs-body);
+}
+
+.tail {
+  fill: var(--paper);
+  transition: fill var(--dur-fast) var(--ease);
+}
+
+.on .tail {
+  fill: var(--ball);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .on {
+    transform: translate(-50%, -100%);
+  }
+}

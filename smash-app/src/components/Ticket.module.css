@@ -1,0 +1,123 @@
+.ticket {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius-20);
+  overflow: hidden;
+}
+
+.top {
+  padding: var(--space-20) var(--space-20) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.bottom {
+  padding: var(--space-8) var(--space-20) var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* перфорация: пунктир line и два выреза цвета фона */
+.perf {
+  position: relative;
+  height: 24px;
+}
+
+.perf::before {
+  content: '';
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  top: 11px;
+  border-top: 2px dashed var(--line);
+}
+
+.perf::after {
+  content: '';
+  position: absolute;
+  left: -12px;
+  right: -12px;
+  top: 0;
+  height: 24px;
+  background:
+    radial-gradient(circle at 12px 12px, var(--notch) 11.5px, transparent 12px) left / 24px 24px no-repeat,
+    radial-gradient(circle at 12px 12px, var(--notch) 11.5px, transparent 12px) right / 24px 24px no-repeat;
+}
+
+.onInk {
+  --notch: var(--ink);
+}
+
+.onChalk {
+  --notch: var(--chalk);
+}
+
+.time {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+}
+
+.start {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: 44px;
+  letter-spacing: var(--ls-display);
+}
+
+.end {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
+  color: var(--muted);
+}
+
+.meta {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.metaK {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.metaV {
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  white-space: nowrap;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.rowK {
+  color: var(--muted);
+}
+
+.rowV {
+  font-weight: 700;
+  white-space: nowrap;
+}

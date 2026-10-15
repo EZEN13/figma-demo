@@ -1,0 +1,110 @@
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.headRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.h {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+}
+
+.value {
+  font-weight: 700;
+  font-size: var(--fs-body);
+}
+
+.slider {
+  position: relative;
+  height: 28px;
+}
+
+.track,
+.fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.fill {
+  background: var(--ink);
+  transform-origin: 0 50%;
+}
+
+.thumb {
+  position: absolute;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--ink);
+  pointer-events: none;
+}
+
+.range {
+  position: absolute;
+  inset: -8px 0;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  touch-action: pan-x;
+}
+
+.range:focus-visible + * {
+  outline: none;
+}
+
+.slider:has(.range:focus-visible) .thumb {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+}
+
+.reset {
+  flex: none;
+  min-height: var(--tap);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

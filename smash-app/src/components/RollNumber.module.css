@@ -1,0 +1,14 @@
+.roll {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.cell {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.ch {
+  display: inline-block;
+}

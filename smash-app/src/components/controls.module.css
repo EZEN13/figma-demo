@@ -1,0 +1,128 @@
+/* DateChip */
+.date {
+  flex: none;
+  width: 56px;
+  height: 64px;
+  border-radius: var(--radius-12);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.dateOn {
+  background: var(--ball);
+  box-shadow: none;
+}
+
+.dateDay {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.dateOn .dateDay {
+  color: var(--ink);
+}
+
+.dateNum {
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  font-weight: 700;
+}
+
+/* Segment */
+.segment {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-12);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.segItem {
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--tap);
+  padding: 0 var(--space-8);
+  border-radius: var(--radius-8);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  white-space: nowrap;
+}
+
+.segOn {
+  background: var(--ink);
+  color: var(--chalk);
+}
+
+/* Chip */
+.chip {
+  height: 40px;
+  padding: 0 var(--space-16);
+  border-radius: var(--radius-full);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  position: relative;
+}
+
+.chip::after {
+  content: '';
+  position: absolute;
+  inset: -2px 0;
+}
+
+.chipOn {
+  background: var(--ink);
+  color: var(--chalk);
+  box-shadow: none;
+}
+
+/* TagChip */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-full);
+  background: var(--chalk-12);
+  color: var(--chalk);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* поверх рисунка: плотная подложка, чтобы линии не мешали читать */
+.tagSolid {
+  background: rgb(17 18 16 / 0.8);
+  box-shadow: inset 0 0 0 1px var(--chalk-12);
+}
+
+/* DateStrip: выходит за поля экрана, скроллится по горизонтали */
+.strip {
+  display: flex;
+  gap: var(--space-8);
+  overflow-x: auto;
+  margin: 0 calc(-1 * var(--screen-pad));
+  padding: 0 var(--screen-pad);
+  scroll-padding: 0 var(--screen-pad);
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+}
+
+.strip > * {
+  scroll-snap-align: start;
+}

@@ -1,6 +1,11 @@
-import { Navigate, Route, Routes, useParams, type Location } from 'react-router';
+import { Navigate, Route, Routes, type Location } from 'react-router';
 import { Splash } from './screens/Splash';
 import { Stub } from './screens/Stub';
+import { Home } from './screens/Home';
+import { MapScreen } from './screens/MapScreen';
+import { Court } from './screens/Court';
+import { Pay } from './screens/Pay';
+import { BookingSuccess } from './screens/BookingSuccess';
 import { useApp } from './state/AppState';
 
 function Places({ edit }: { edit?: boolean }) {
@@ -18,15 +23,6 @@ function Places({ edit }: { edit?: boolean }) {
   );
 }
 
-function BookingStub({ success }: { success?: boolean }) {
-  const { id } = useParams();
-  return success ? (
-    <Stub num="13" title={`Бронь ${id ?? ''} подтверждена`} stage={2} top="dark" backTo="/bookings" />
-  ) : (
-    <Stub num="13" title={`Бронь ${id ?? ''}`} stage={3} top="dark" backTo="/bookings" />
-  );
-}
-
 /** Карта маршрутов SPEC §4.2. */
 export function AppRoutes({ location }: { location: Location }) {
   return (
@@ -36,12 +32,12 @@ export function AppRoutes({ location }: { location: Location }) {
       <Route path="/welcome/2" element={<Stub num="03" title="Соберите четвёрку" stage={4} top="dark" backTo="/welcome/1" next={{ label: 'Начать', to: '/welcome/level' }} />} />
       <Route path="/welcome/level" element={<Stub num="06" title="Ваш уровень" stage={4} backTo="/welcome/2" next={{ label: 'Дальше', to: '/welcome/places' }} />} />
       <Route path="/welcome/places" element={<Places />} />
-      <Route path="/courts" element={<Stub num="08" title="Корты" stage={2} top="dark" backTo={null} tab next={{ label: 'Корт 3, Лужники', to: '/court/luzhniki-3' }} />} />
-      <Route path="/courts/map" element={<Stub num="09" title="Карта" stage={2} top="dark" backTo="/courts" tab />} />
-      <Route path="/court/:courtId" element={<Stub num="11" title="Корт" stage={2} top="dark" backTo="/courts" next={{ label: 'Забронировать', to: '/pay?court=luzhniki-3' }} />} />
-      <Route path="/pay" element={<Stub num="12" title="Оплата" stage={2} backTo="/courts" next={{ label: 'Оплатить', to: '/booking/SM-48217/success', replace: true }} />} />
-      <Route path="/booking/:id/success" element={<BookingStub success />} />
-      <Route path="/booking/:id" element={<BookingStub />} />
+      <Route path="/courts" element={<Home />} />
+      <Route path="/courts/map" element={<MapScreen />} />
+      <Route path="/court/:courtId" element={<Court />} />
+      <Route path="/pay" element={<Pay />} />
+      <Route path="/booking/:id/success" element={<BookingSuccess mode="success" />} />
+      <Route path="/booking/:id" element={<BookingSuccess mode="view" />} />
       <Route path="/bookings" element={<Stub num="14" title="Брони" stage={3} backTo={null} tab />} />
       <Route path="/matches" element={<Stub num="16" title="Открытые матчи" stage={3} top="dark" backTo={null} tab next={{ label: 'Матч в 19:00', to: '/match/m1' }} />} />
       <Route path="/match/:id" element={<Stub num="17" title="Матч" stage={3} top="dark" backTo="/matches" />} />

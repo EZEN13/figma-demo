@@ -1,4 +1,5 @@
-import { useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useDragControls, type PanInfo } from 'motion/react';
 import { X } from 'lucide-react';
 import { useBackButton } from '../telegram/useBackButton';
@@ -20,7 +21,14 @@ interface Props {
  * Пока открыт, нативная «Назад» закрывает шит.
  */
 export function Sheet({ open, onClose, title, footer, children }: Props) {
-  return <AnimatePresence>{open && <SheetBody onClose={onClose} title={title} footer={footer}>{children}</SheetBody>}</AnimatePresence>;
+  // портал над таб-баром: у страницы свой контекст наложения (анимация перехода)
+  const [host, setHost] = useState<HTMLElement | null>(null);
+  useEffect(() => setHost(document.getElementById('overlay-root')), []);
+  if (!host) return null;
+  return createPortal(
+    <AnimatePresence>{open && <SheetBody onClose={onClose} title={title} footer={footer}>{children}</SheetBody>}</AnimatePresence>,
+    host,
+  );
 }
 
 function SheetBody({ onClose, title, footer, children }: Omit<Props, 'open'>) {

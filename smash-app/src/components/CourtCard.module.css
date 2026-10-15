@@ -1,0 +1,156 @@
+.card {
+  position: relative;
+  background: var(--paper);
+  border-radius: var(--radius-16);
+  overflow: hidden;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.card:has(.main:active) {
+  transform: scale(0.97);
+}
+
+.art {
+  position: relative;
+  height: 120px;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.court {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -65px 0 0 -130px;
+}
+
+.ball {
+  position: absolute;
+  margin-left: -40px;
+}
+
+.dist {
+  position: absolute;
+  left: var(--space-12);
+  top: var(--space-12);
+}
+
+.price {
+  position: absolute;
+  right: var(--space-12);
+  top: var(--space-12);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-8);
+  background: var(--ball);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: var(--lh-caption);
+}
+
+.info {
+  padding: var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+/* вся карточка — зона нажатия; слоты лежат выше */
+.main {
+  text-align: left;
+  min-width: 0;
+}
+
+.main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.main:focus-visible {
+  outline: none;
+}
+
+.main:focus-visible::after {
+  border-radius: var(--radius-16);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+.name {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rating {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-weight: 700;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+}
+
+.district {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.slots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-width: 0;
+}
+
+.day {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.pill {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-8);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+  font-weight: 700;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+}
+
+/* зона нажатия ≥ 44 */
+.pill::before {
+  content: '';
+  position: absolute;
+  inset: -6px -2px;
+}
+
+.more {
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}

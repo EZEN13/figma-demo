@@ -87,6 +87,7 @@ export function App() {
               <ToastProvider>
                 <AnimatedRoutes />
                 <TabBar />
+                <div id="overlay-root" className={s.overlay} />
                 <OfflineBar />
               </ToastProvider>
             </div>

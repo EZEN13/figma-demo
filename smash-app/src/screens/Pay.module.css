@@ -1,0 +1,85 @@
+.content {
+  padding: var(--space-12) var(--screen-pad) var(--space-32);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
+  margin-bottom: var(--space-4);
+}
+
+.summary {
+  padding: var(--space-16);
+  border-radius: var(--radius-16);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.club {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.courtName {
+  flex: none;
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-top: var(--space-4);
+}
+
+.h {
+  font-weight: 700;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.seats {
+  display: flex;
+  gap: 6px;
+}
+
+.note {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}

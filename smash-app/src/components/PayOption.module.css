@@ -1,0 +1,69 @@
+.opt {
+  width: 100%;
+  height: 68px;
+  padding: 0 var(--space-16);
+  border-radius: var(--radius-16);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  text-align: left;
+}
+
+.on {
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-8);
+  background: var(--chalk);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.hint {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.radio {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 0 0 2px var(--line);
+  position: relative;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.on .radio {
+  background: var(--ink);
+  box-shadow: none;
+}
+
+.on .radio::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: var(--radius-full);
+  background: var(--paper);
+}
