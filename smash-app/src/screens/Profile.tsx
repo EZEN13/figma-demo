@@ -7,7 +7,7 @@ import { useQuery } from '../api/useQuery';
 import { LEVELS, PROFILE_STATS } from '../data/user';
 import { useApp, resetDemoStorage } from '../state/AppState';
 import { useTelegram } from '../telegram/useTelegram';
-import { isDev, confirmAction } from '../telegram/tg';
+import { confirmAction } from '../telegram/tg';
 import { haptic } from '../telegram/haptics';
 import { decimal, dayDiff, nowMinutes } from '../lib/format';
 import { levelRange } from '../lib/matchText';
@@ -43,19 +43,18 @@ export function Profile() {
     { icon: CreditCard, title: 'Способы оплаты', sub: 'СБП, Мир 4417', onClick: () => toast('Способы оплаты — скоро') },
     { icon: Bell, title: 'Уведомления', sub: 'Матчи моего уровня', onClick: () => toast('Настройка уведомлений — скоро') },
   ];
-  if (isDev) {
-    settings.push({
-      icon: RotateCcw,
-      title: 'Сбросить демо',
-      sub: 'Очистить данные и начать с онбординга',
-      onClick: async () => {
-        if (!(await confirmAction('Сбросить демо? Брони и настройки удалятся.'))) return;
-        resetDemoStorage();
-        window.location.replace(window.location.pathname + '#/');
-        window.location.reload();
-      },
-    });
-  }
+  // демо: сброс доступен и в Telegram, чтобы заново посмотреть сплэш и онбординг
+  settings.push({
+    icon: RotateCcw,
+    title: 'Сбросить демо',
+    sub: 'Очистить данные и начать с онбординга',
+    onClick: async () => {
+      if (!(await confirmAction('Сбросить демо? Брони и настройки удалятся.'))) return;
+      resetDemoStorage();
+      window.location.replace(window.location.pathname + '#/');
+      window.location.reload();
+    },
+  });
 
   return (
     <Screen top="dark" back={null} toast="tabbar">

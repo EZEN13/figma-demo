@@ -44,8 +44,8 @@ export function Splash() {
   useHeaderColor(HEADER_DARK);
   useBackButton(null);
 
-  // повторный запуск или диплинк: ждать полного ролика незачем
-  const repeat = state.onboarded || !!startParam;
+  // демо: ролик играет целиком при каждом запуске; короче — только по диплинку
+  const repeat = !!startParam;
 
   const go = () => {
     const booking = startParam?.match(/^booking_([\w-]+)$/);
