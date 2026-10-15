@@ -1,0 +1,52 @@
+.host {
+  position: absolute;
+  left: var(--screen-pad);
+  right: var(--screen-pad);
+  z-index: 80;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.tabbar {
+  bottom: calc(var(--tabbar-bottom) + var(--h-tabbar) + var(--space-12));
+}
+
+.bar {
+  bottom: calc(var(--bar-pad-bottom) + var(--h-button) + var(--space-16) + var(--space-12));
+}
+
+.bottom {
+  bottom: var(--bar-pad-bottom);
+}
+
+.toast {
+  pointer-events: auto;
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-16);
+  background: var(--ink);
+  color: var(--chalk);
+  box-shadow: 0 0 0 1px var(--chalk-12);
+}
+
+.text {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 500;
+}
+
+.action {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 var(--space-8);
+  margin: calc(-1 * var(--space-8)) calc(-1 * var(--space-8)) calc(-1 * var(--space-8)) 0;
+  font-weight: 700;
+  color: var(--ball);
+  border-radius: var(--radius-8);
+}

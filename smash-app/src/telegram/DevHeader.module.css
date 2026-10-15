@@ -1,0 +1,22 @@
+.bar {
+  flex: 0 0 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-12);
+  position: relative;
+  z-index: 50;
+}
+
+.pill {
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-12);
+  border-radius: var(--radius-full);
+  background: rgb(128 128 128 / 0.22);
+  font-size: var(--fs-body);
+  font-weight: 500;
+}

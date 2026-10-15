@@ -1,0 +1,32 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chalk {
+  background: var(--chalk);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--chalk);
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fixed {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}

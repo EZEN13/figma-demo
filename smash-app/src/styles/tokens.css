@@ -1,0 +1,75 @@
+/* СМЭШ — токены. Источник: ../../DESIGN.md. Компоненты читают только эти переменные. */
+:root {
+  /* Палитра */
+  --ink: #111210;
+  --chalk: #f1eee4;
+  --paper: #fbfaf5;
+  --muted: #6e6c63;
+  --line: #d8d3c4;
+  --ball: #ccff00;
+
+  /* Полупрозрачные производные (то же, что в Figma без привязки) */
+  --chalk-10: rgb(241 238 228 / 0.1);
+  --chalk-12: rgb(241 238 228 / 0.12);
+  --chalk-18: rgb(241 238 228 / 0.18);
+  --chalk-40: rgb(241 238 228 / 0.4);
+  --chalk-60: rgb(241 238 228 / 0.6);
+  --chalk-65: rgb(241 238 228 / 0.65);
+  --chalk-70: rgb(241 238 228 / 0.7);
+  --ink-40: rgb(17 18 16 / 0.4);
+
+  /* Шрифты */
+  --font-display: 'Unbounded', 'Arial Black', sans-serif;
+  --font-text: 'Onest', system-ui, -apple-system, sans-serif;
+
+  /* Шкала текста (5 размеров) + сумма в нижней панели */
+  --fs-display: 40px;  --lh-display: 42px;
+  --fs-title: 24px;    --lh-title: 28px;
+  --fs-body-l: 17px;   --lh-body-l: 22px;
+  --fs-body: 15px;     --lh-body: 20px;
+  --fs-caption: 13px;  --lh-caption: 16px;
+  --fs-sum: 20px;      --lh-sum: 24px;
+  --ls-display: -0.03em;
+  --ls-title: -0.02em;
+
+  /* Отступы */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --screen-pad: var(--space-20);
+
+  /* Радиусы */
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-full: 999px;
+
+  /* Размеры */
+  --h-button: 56px;
+  --h-slot: 56px;
+  --h-field: 52px;
+  --h-tabbar: 64px;
+  --tap: 44px;
+
+  /* Движение */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+
+  /* Telegram safe area с фолбэком на env() */
+  --sat: max(env(safe-area-inset-top, 0px), var(--tg-safe-area-inset-top, 0px));
+  --sab: max(env(safe-area-inset-bottom, 0px), var(--tg-safe-area-inset-bottom, 0px));
+  --csat: var(--tg-content-safe-area-inset-top, 0px);
+
+  /* Нижние элементы: таб-бар 30 от низа в макете, над safe area */
+  --tabbar-bottom: max(30px, calc(var(--sab) + var(--space-12)));
+  --bar-pad-bottom: max(var(--space-24), calc(var(--sab) + var(--space-12)));
+  --tabbar-space: calc(var(--tabbar-bottom) + var(--h-tabbar) + var(--space-24));
+}

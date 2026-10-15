@@ -1,0 +1,38 @@
+.bar {
+  position: absolute;
+  left: var(--screen-pad);
+  right: var(--screen-pad);
+  bottom: var(--tabbar-bottom);
+  z-index: 40;
+  height: var(--h-tabbar);
+  padding: 0 var(--space-8);
+  border-radius: var(--radius-full);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tab {
+  height: 48px;
+  min-width: 48px;
+  padding: 0 var(--space-12);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  color: var(--chalk-70);
+}
+
+.on {
+  background: var(--chalk);
+  color: var(--ink);
+  padding: 0 var(--space-16);
+}
+
+.label {
+  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
