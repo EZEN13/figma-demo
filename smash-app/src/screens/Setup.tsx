@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { Heart } from 'lucide-react';
 import { Screen } from '../components/Screen';
 import { Button } from '../components/Button';
@@ -11,6 +11,7 @@ import { useApp, type LevelId } from '../state/AppState';
 import { haptic } from '../telegram/haptics';
 import { decimal, km } from '../lib/format';
 import { useGoBack } from '../lib/nav';
+import { useFinishFlow } from '../lib/flow';
 import s from './Setup.module.css';
 
 type Mode = 'onboarding' | 'edit';
@@ -107,6 +108,8 @@ export function PlacesScreen({ mode }: { mode: Mode }) {
   const navigate = useNavigate();
   const goBack = useGoBack();
   const toast = useToast();
+  const location = useLocation();
+  const finishFlow = useFinishFlow();
   const [districts, setDistricts] = useState<string[]>(state.districts);
   const edit = mode === 'edit';
   const favKey = (id: string) => `club:${id}`;
@@ -118,7 +121,8 @@ export function PlacesScreen({ mode }: { mode: Mode }) {
       navigate('/profile', { replace: true, state: { dir: 'back' } });
     } else {
       dispatch({ type: 'onboard' });
-      navigate('/courts', { replace: true });
+      // онбординг целиком уходит из истории (SPEC §4.3)
+      finishFlow('/courts', location);
     }
   };
 

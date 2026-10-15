@@ -1,0 +1,182 @@
+.swipe {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  touch-action: pan-y;
+}
+
+.art {
+  position: relative;
+  flex: none;
+  height: min(456px, 56dvh);
+  min-height: 340px;
+  background: var(--ink);
+  color: var(--chalk);
+  border-radius: 0 0 32px 32px;
+  overflow: hidden;
+}
+
+/* сцена 390 по центру: на узких экранах края корта уходят за край */
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 390px;
+  margin-left: -195px;
+}
+
+.skip {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-8);
+  min-height: var(--tap);
+  padding: 0 var(--space-12);
+  font-weight: 500;
+  color: var(--chalk-70);
+  z-index: 2;
+}
+
+.court2 {
+  position: absolute;
+  left: 200px;
+  top: 56%;
+  margin: -115px 0 0 -230px;
+}
+
+.pane {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 291px;
+  margin: -88px 0 0 -145px;
+  padding: var(--space-16);
+  border-radius: var(--radius-20);
+  background: var(--paper);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  box-shadow: 0 24px 48px rgb(0 0 0 / 0.35);
+}
+
+.paneHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--muted);
+}
+
+.live {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--ink);
+  animation: live 1s var(--ease) infinite alternate;
+}
+
+.paneRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.paneRow > * {
+  pointer-events: none;
+}
+
+.ball2 {
+  position: absolute;
+  left: 252px;
+  top: 14%;
+}
+
+.four {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 50%;
+  margin-top: -90px;
+}
+
+.need {
+  position: absolute;
+  right: 18.5%;
+  top: calc(100% + 18px);
+  transform: translateX(50%);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-full);
+  background: var(--ball);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  white-space: nowrap;
+}
+
+.ball3 {
+  position: absolute;
+  left: 150px;
+  top: 12%;
+}
+
+.text {
+  padding: var(--space-32) var(--screen-pad) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.body {
+  color: var(--muted);
+}
+
+.footer {
+  flex: none;
+  padding: var(--space-16) var(--screen-pad) var(--bar-pad-bottom);
+  background: var(--chalk);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.dots {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.dot,
+.dotOn {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--line);
+}
+
+.dotOn {
+  width: 24px;
+  background: var(--ink);
+}
+
+@keyframes live {
+  to {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live {
+    animation: none;
+  }
+}

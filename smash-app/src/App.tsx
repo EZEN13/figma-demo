@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { HashRouter, useLocation, useNavigationType } from 'react-router';
-import { AnimatePresence, MotionConfig, motion, type Variants } from 'motion/react';
+import { AnimatePresence, MotionConfig, motion, useReducedMotion, type Variants } from 'motion/react';
 import { AppRoutes } from './routes';
 import { AppStateProvider } from './state/AppState';
 import { ToastProvider } from './components/Toast';
@@ -8,24 +8,36 @@ import { TabBar } from './components/TabBar';
 import { DevHeader } from './telegram/DevHeader';
 import { isDev } from './telegram/tg';
 import { metaOf } from './lib/nav';
+import { useFrozenLocation } from './lib/flow';
 import { EASE } from './lib/motion';
 import s from './App.module.css';
 
-type Dir = 'push' | 'back' | 'fade';
+type Dir = 'push' | 'back' | 'fade' | 'splash' | 'reduced';
 
 // SPEC §7: push — x 24→0 + opacity за 250 мс, старый гаснет за 150; назад — зеркально; таб — crossfade 150.
+// Сплэш уходит кроссфейдом 250 мс. reduced-motion — только opacity 200 мс.
 const variants: Variants = {
-  initial: (d: Dir) => (d === 'fade' ? { opacity: 0, x: 0 } : { opacity: 0, x: d === 'back' ? -24 : 24 }),
-  animate: (d: Dir) => ({ opacity: 1, x: 0, zIndex: 1, transition: { duration: d === 'fade' ? 0.15 : 0.25, ease: EASE } }),
-  exit: () => ({ opacity: 0, zIndex: 0, pointerEvents: 'none', transition: { duration: 0.15, ease: EASE } }),
+  initial: (d: Dir) => (d === 'push' || d === 'back' ? { opacity: 0, x: d === 'back' ? -24 : 24 } : { opacity: 0, x: 0 }),
+  animate: (d: Dir) => ({
+    opacity: 1,
+    x: 0,
+    zIndex: 1,
+    transition: { duration: d === 'fade' ? 0.15 : d === 'reduced' ? 0.2 : 0.25, ease: EASE },
+  }),
+  exit: (d: Dir) => ({ opacity: 0, zIndex: 0, pointerEvents: 'none', transition: { duration: d === 'reduced' ? 0.2 : d === 'splash' ? 0.25 : 0.15, ease: EASE } }),
 };
 
 function AnimatedRoutes() {
-  const location = useLocation();
+  const live = useLocation();
+  const frozen = useFrozenLocation();
+  const location = frozen ?? live;
+  const reduced = useReducedMotion();
   const navType = useNavigationType();
   const prev = useRef(location);
 
   const dir: Dir = useMemo(() => {
+    if (reduced) return 'reduced';
+    if (prev.current.pathname === '/') return 'splash';
     const a = metaOf(prev.current.pathname);
     const b = metaOf(location.pathname);
     if (a.tab && b.tab && a.tab !== b.tab) return 'fade';

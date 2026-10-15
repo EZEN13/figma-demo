@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, type Location } from 'react-router';
 import { Splash } from './screens/Splash';
-import { Stub } from './screens/Stub';
+import { Welcome } from './screens/Welcome';
 import { Home } from './screens/Home';
 import { MapScreen } from './screens/MapScreen';
 import { Court } from './screens/Court';
@@ -12,13 +12,13 @@ import { Match } from './screens/Match';
 import { Profile } from './screens/Profile';
 import { LevelScreen, PlacesScreen } from './screens/Setup';
 
-/** Карта маршрутов SPEC §4.2. Онбординг 02/03 и анимация сплэша — этап 4. */
+/** Карта маршрутов SPEC §4.2. */
 export function AppRoutes({ location }: { location: Location }) {
   return (
     <Routes location={location}>
       <Route path="/" element={<Splash />} />
-      <Route path="/welcome/1" element={<Stub num="02" title="Корт за 30 секунд" stage={4} top="dark" backTo={null} next={{ label: 'Дальше', to: '/welcome/2' }} />} />
-      <Route path="/welcome/2" element={<Stub num="03" title="Соберите четвёрку" stage={4} top="dark" backTo="/welcome/1" next={{ label: 'Начать', to: '/welcome/level' }} />} />
+      <Route path="/welcome/1" element={<Welcome page={1} />} />
+      <Route path="/welcome/2" element={<Welcome page={2} />} />
       <Route path="/welcome/level" element={<LevelScreen mode="onboarding" />} />
       <Route path="/welcome/places" element={<PlacesScreen mode="onboarding" />} />
       <Route path="/courts" element={<Home />} />

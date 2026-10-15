@@ -3,21 +3,120 @@
   inset: 0;
   background: var(--ink);
   color: var(--chalk);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-12);
+  overflow: hidden;
 }
 
-.logo {
+.stage {
+  position: absolute;
+  inset: 0;
+  --cy: 52%;
+}
+
+.court {
+  position: absolute;
+  left: 50%;
+  top: var(--cy);
+  transform: translate(-50%, -50%) rotate(16deg);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.impact {
+  position: absolute;
+  left: 50%;
+  top: var(--cy);
+  width: 0;
+  height: 0;
+}
+
+/* прыжок к 01c: кольца и искры убираем мгновенно, не трогая их анимации */
+.impact[data-off] .ring,
+.impact[data-off] .sparkPos {
+  visibility: hidden;
+}
+
+.ring {
+  position: absolute;
+  left: -48px;
+  top: -48px;
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--ball);
+}
+
+.ring[data-ring='1'] {
+  border-width: 2px;
+}
+
+.sparkPos {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  transform-origin: 0 2px;
+}
+
+.spark {
+  display: block;
+  width: 22px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--ball);
+}
+
+.fx {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.rot {
+  position: absolute;
+  left: -28px;
+  top: -28px;
+  width: 56px;
+  height: 56px;
+  transform-origin: 50% 50%;
+}
+
+/* шлейф до 2,6 диаметра, растёт от мяча назад */
+.trail {
+  position: absolute;
+  right: 28px;
+  top: 0;
+  width: 146px;
+  height: 56px;
+  transform-origin: 100% 50%;
+}
+
+.trail i {
+  position: absolute;
+  right: 0;
+  height: 4.5px;
+  margin-top: -2.25px;
+  border-radius: 3px;
+  background: var(--ball);
+}
+
+.body {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.lockup {
+  position: absolute;
+  left: 50%;
+  top: var(--cy);
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: flex-end;
-  gap: var(--space-4);
+  gap: 10px;
 }
 
 /* логотип 64 — иллюстрация вне шкалы (DESIGN.md) */
 .word {
+  display: flex;
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 64px;
@@ -25,12 +124,53 @@
   letter-spacing: -0.04em;
 }
 
+.letter {
+  display: inline-block;
+}
+
 .dot {
-  margin-bottom: 10px;
+  display: block;
+  margin-bottom: 9px;
 }
 
 .sub {
-  font-size: var(--fs-body);
-  color: var(--chalk-60);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--cy) + 52px);
+  text-align: center;
   font-weight: 500;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--chalk-60);
+}
+
+.progress {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--cy) + 92px);
+  width: 64px;
+  height: 3px;
+  margin-left: -32px;
+  border-radius: 2px;
+  background: var(--chalk-12);
+  overflow: hidden;
+}
+
+.progress::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ball);
+  transform-origin: 0 50%;
+  animation: load 1s var(--ease) infinite;
+}
+
+@keyframes load {
+  0% {
+    transform: translateX(-100%) scaleX(0.6);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.6);
+  }
 }
