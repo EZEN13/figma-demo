@@ -154,3 +154,9 @@
   line-height: var(--lh-caption);
   color: var(--muted);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .card:has(.main:active) {
+    transform: none;
+  }
+}

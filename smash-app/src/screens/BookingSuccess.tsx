@@ -152,9 +152,9 @@ function BookingView({ b, mode, back }: { b: Booking; mode: 'success' | 'view'; 
 
         <motion.div
           className={s.ticketWrap}
-          initial={success ? { opacity: 0, y: 24 } : false}
+          initial={success ? { opacity: 0, y: 24 } : { opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, ease: EASE, delay: success ? 0.15 : 0 }}
+          transition={{ duration: success ? 0.3 : 0.2, ease: EASE, delay: success ? 0.15 : 0 }}
         >
           <Ticket
             top={

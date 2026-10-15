@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion, useDragControls, type PanInfo } from 'motion/react';
+import { AnimatePresence, motion, useDragControls, useReducedMotion, type PanInfo } from 'motion/react';
 import { X } from 'lucide-react';
 import { useBackButton } from '../telegram/useBackButton';
 import { EASE } from '../lib/motion';
@@ -34,6 +34,7 @@ export function Sheet({ open, onClose, title, footer, children }: Props) {
 function SheetBody({ onClose, title, footer, children }: Omit<Props, 'open'>) {
   const controls = useDragControls();
   const panel = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
   useBackButton(onClose, 'sheet');
 
   const onDragEnd = (_: unknown, info: PanInfo) => {
@@ -54,10 +55,10 @@ function SheetBody({ onClose, title, footer, children }: Omit<Props, 'open'>) {
       <motion.div
         ref={panel}
         className={s.panel}
-        initial={{ y: '100%' }}
-        animate={{ y: 0 }}
-        exit={{ y: '100%' }}
-        transition={{ duration: 0.25, ease: EASE }}
+        initial={reduced ? { opacity: 0 } : { y: '100%' }}
+        animate={reduced ? { opacity: 1 } : { y: 0 }}
+        exit={reduced ? { opacity: 0 } : { y: '100%' }}
+        transition={{ duration: reduced ? 0.2 : 0.25, ease: EASE }}
         drag="y"
         dragListener={false}
         dragControls={controls}
