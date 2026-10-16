@@ -1,0 +1,15 @@
+[Unit]
+Description=СМЭШ Telegram bot (@smashpadel_bot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=agent
+WorkingDirectory=/home/agent/projects/figma-demo/bot
+EnvironmentFile=/etc/smash-bot.env
+ExecStart=/usr/bin/python3 /home/agent/projects/figma-demo/bot/bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
