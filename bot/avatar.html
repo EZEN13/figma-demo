@@ -1,0 +1,91 @@
+<!doctype html>
+<!--
+  Аватарка бота @smashpadel_bot: PNG 1024 × 1024, Telegram обрезает в круг.
+  Всё значимое внутри круга r = 390 от центра (запас ~12% от края круга).
+  Варианты: avatar.html#a (финал: мяч со шлейфом), #b (буква «с» с мячом-точкой), #c (мяч и линии корта).
+  Рендер: Chromium, viewport 1024 × 1024, deviceScaleFactor 1. Шрифт из node_modules smash-app.
+-->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Unbounded'; font-weight: 900; src: url('../smash-app/node_modules/@fontsource/unbounded/files/unbounded-cyrillic-900-normal.woff2') format('woff2'); unicode-range: U+0400-04FF; }
+  :root { --ink:#111210; --chalk:#F1EEE4; --ball:#CCFF00; }
+  html, body { margin: 0; width: 1024px; height: 1024px; overflow: hidden; background: var(--ink); }
+  .v { display: none; position: absolute; inset: 0; }
+  body[data-v="a"] #a, body[data-v="b"] #b, body[data-v="c"] #c { display: block; }
+  /* служебная направляющая безопасной зоны, включается #a-guide */
+  .guide { display: none; position: absolute; left: 122px; top: 122px; width: 780px; height: 780px; border-radius: 50%; box-shadow: inset 0 0 0 2px #f0f; }
+  body.g .guide { display: block; }
+  .letter { position: absolute; left: 512px; top: 512px; font: 900 600px/1 'Unbounded', sans-serif; color: var(--chalk); }
+</style>
+</head>
+<body>
+  <!-- A: мяч со шлейфом скорости, летит снизу слева вверх вправо -->
+  <svg id="a" class="v" width="1024" height="1024" viewBox="0 0 1024 1024" aria-hidden="true">
+    <defs><clipPath id="ca"><circle cx="0" cy="0" r="210"/></clipPath></defs>
+    <g transform="translate(590 456) rotate(-30)">
+      <rect x="-410" y="-116" width="180" height="34" rx="17" fill="#CCFF00" opacity=".3"/>
+      <rect x="-450" y="-17"  width="250" height="34" rx="17" fill="#CCFF00" opacity=".6"/>
+      <rect x="-410" y="82"   width="180" height="34" rx="17" fill="#CCFF00" opacity=".3"/>
+      <circle r="210" fill="#CCFF00"/>
+      <g clip-path="url(#ca)" fill="none" stroke="#111210" stroke-width="24">
+        <circle cx="-294" cy="0" r="198"/><circle cx="294" cy="0" r="198"/>
+      </g>
+    </g>
+  </svg>
+
+  <!-- B: строчная «с» Unbounded Black с мячом-точкой на базовой линии, как в «смэш.» -->
+  <svg id="b" class="v" width="1024" height="1024" viewBox="0 0 1024 1024" aria-hidden="true">
+    <defs><clipPath id="cb"><circle r="80"/></clipPath></defs>
+    <text id="bl" x="0" y="0" font-family="Unbounded" font-weight="900" font-size="620" fill="#F1EEE4">с</text>
+    <g id="bd">
+      <circle r="80" fill="#CCFF00"/>
+      <g clip-path="url(#cb)" fill="none" stroke="#111210" stroke-width="10">
+        <circle cx="-112" r="75"/><circle cx="112" r="75"/>
+      </g>
+    </g>
+  </svg>
+
+  <!-- C: мяч на фрагменте корта сверху — линия подачи и центральная линия -->
+  <svg id="c" class="v" width="1024" height="1024" viewBox="0 0 1024 1024" aria-hidden="true">
+    <defs><clipPath id="cc"><circle cx="0" cy="0" r="150"/></clipPath>
+      <clipPath id="safe"><circle cx="512" cy="512" r="420"/></clipPath></defs>
+    <g clip-path="url(#safe)" stroke="#F1EEE4" stroke-width="16" fill="none" opacity=".5" stroke-linecap="round">
+      <g transform="rotate(-24 512 512)">
+        <path d="M60 620H964M512 620V1000"/>
+        <path d="M60 300H964" />
+      </g>
+    </g>
+    <g transform="translate(560 470) rotate(-24)">
+      <rect x="-360" y="-80" width="160" height="28" rx="14" fill="#CCFF00" opacity=".3"/>
+      <rect x="-400" y="-14" width="230" height="28" rx="14" fill="#CCFF00" opacity=".6"/>
+      <rect x="-340" y="52"  width="140" height="28" rx="14" fill="#CCFF00" opacity=".3"/>
+      <circle r="150" fill="#CCFF00"/>
+      <g clip-path="url(#cc)" fill="none" stroke="#111210" stroke-width="18">
+        <circle cx="-210" cy="0" r="141"/><circle cx="210" cy="0" r="141"/>
+      </g>
+    </g>
+  </svg>
+  <div class="guide"></div>
+<script>
+  const h = location.hash.replace('#','').split('-');
+  document.body.dataset.v = h[0] || 'a';
+  if (h[1] === 'guide') document.body.classList.add('g');
+  // B: центрируем знак «с + мяч» по реальным границам глифа
+  document.fonts.ready.then(() => {
+    const T = document.getElementById('bl'), D = document.getElementById('bd');
+    const bb = T.getBBox(); // приблизительно; точные границы берём из canvas
+    const c = document.createElement('canvas').getContext('2d');
+    c.font = "900 620px Unbounded";
+    const m = c.measureText('с');
+    const gw = m.actualBoundingBoxRight + m.actualBoundingBoxLeft, gh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+    const r = 80, gap = 28, total = gw + gap + 2 * r;
+    const left = 512 - total / 2, base = 512 + gh / 2 - m.actualBoundingBoxDescent;
+    T.setAttribute('x', left + m.actualBoundingBoxLeft); T.setAttribute('y', base);
+    D.setAttribute('transform', `translate(${left + gw + gap + r} ${base + m.actualBoundingBoxDescent - r})`);
+    window.__ready = {gw, gh};
+  });
+</script>
+</body>
+</html>
