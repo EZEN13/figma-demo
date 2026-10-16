@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+  Промо-картинка бота на /start: PNG 1280 × 720 (16:9, Telegram показывает без обрезки).
+  Рендер: Chromium, viewport 1280 × 720, deviceScaleFactor 1, скриншот в welcome.png.
+  Экран в телефоне — screen-court-3x.png: живое приложение (ezen13.github.io/figma-demo),
+  экран корта с выбранным слотом, 390 × 844 в 3×.
+  Шрифты из node_modules smash-app — перед рендером нужен npm install в smash-app.
+-->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Unbounded'; font-weight: 900; src: url('../smash-app/node_modules/@fontsource/unbounded/files/unbounded-cyrillic-900-normal.woff2') format('woff2'); unicode-range: U+0400-04FF; }
+  @font-face { font-family: 'Unbounded'; font-weight: 900; src: url('../smash-app/node_modules/@fontsource/unbounded/files/unbounded-latin-900-normal.woff2') format('woff2'); unicode-range: U+0000-00FF; }
+  @font-face { font-family: 'Onest'; font-weight: 500; src: url('../smash-app/node_modules/@fontsource/onest/files/onest-cyrillic-500-normal.woff2') format('woff2'); unicode-range: U+0400-04FF; }
+  @font-face { font-family: 'Onest'; font-weight: 500; src: url('../smash-app/node_modules/@fontsource/onest/files/onest-latin-500-normal.woff2') format('woff2'); unicode-range: U+0000-00FF; }
+  @font-face { font-family: 'Onest'; font-weight: 700; src: url('../smash-app/node_modules/@fontsource/onest/files/onest-cyrillic-700-normal.woff2') format('woff2'); unicode-range: U+0400-04FF; }
+  @font-face { font-family: 'Onest'; font-weight: 700; src: url('../smash-app/node_modules/@fontsource/onest/files/onest-latin-700-normal.woff2') format('woff2'); unicode-range: U+0000-00FF; }
+  :root { --ink:#111210; --chalk:#F1EEE4; --ball:#CCFF00; }
+  html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; background: var(--ink); }
+  body { position: relative; }
+  .abs { position: absolute; }
+
+  /* фон: схема корта под углом, как разметка */
+  .court { left: 820px; top: 360px; transform: translate(-50%, -50%) rotate(-24deg); }
+
+  /* телефон */
+  .phone { left: 968px; top: 372px; width: 316px; height: 674px; transform: translate(-50%, -50%) rotate(-14deg);
+           background: var(--ink); border-radius: 52px; box-shadow: 0 0 0 2px rgba(241,238,228,.28); }
+  .screen { position: absolute; inset: 12px; border-radius: 40px; overflow: hidden; background: var(--chalk); }
+  .screen img { display: block; width: 100%; height: auto; }
+  .island { position: absolute; left: 50%; top: 20px; width: 84px; height: 24px; border-radius: 999px; background: var(--ink); transform: translateX(-50%); }
+
+  /* удар: кольца */
+  .rings { left: 652px; top: 152px; }
+  .rings i { position: absolute; border-radius: 50%; border: 4px solid var(--ball); transform: translate(-50%, -50%); }
+
+  /* текст */
+  .logo { left: 72px; top: 64px; display: flex; align-items: flex-end; gap: 8px; }
+  .word { font: 900 52px/44px 'Unbounded', sans-serif; letter-spacing: -0.04em; color: var(--chalk); }
+  .offer { left: 72px; top: 248px; font: 900 92px/96px 'Unbounded', sans-serif; letter-spacing: -0.045em; color: var(--chalk); margin: 0; }
+  .offer em { font-style: normal; color: var(--ball); }
+  .sub { left: 72px; top: 480px; font: 500 36px/44px 'Onest', sans-serif; color: rgba(241,238,228,.72); margin: 0; }
+
+  /* стикер */
+  .sticker { left: 612px; top: 580px; transform: rotate(-6deg); background: var(--ball); color: var(--ink);
+             font: 700 34px/1 'Onest', sans-serif; padding: 18px 28px; border-radius: 16px; box-shadow: 0 0 0 6px var(--ink); }
+</style>
+</head>
+<body>
+  <svg class="abs court" width="1400" height="700" viewBox="0 0 1400 700" fill="none" aria-hidden="true">
+    <g stroke="#F1EEE4" stroke-width="3" opacity=".12">
+      <rect x="1.5" y="1.5" width="1397" height="697"/>
+      <path d="M213 0V700M1187 0V700M213 350H1187"/>
+    </g>
+    <rect x="696" y="-10" width="8" height="720" rx="4" fill="#F1EEE4" opacity=".18"/>
+  </svg>
+
+  <div class="abs phone">
+    <div class="screen"><img src="screen-court-3x.png" alt=""></div>
+  </div>
+
+  <div class="abs rings">
+    <i style="width:150px;height:150px;opacity:.6"></i>
+    <i style="width:222px;height:222px;opacity:.22;border-width:3px"></i>
+  </div>
+
+  <!-- мяч со шлейфом, летит слева сверху к телефону -->
+  <svg class="abs" style="left:378px;top:98px;transform:rotate(22deg);transform-origin:270px 54px" width="330" height="108" viewBox="-220 0 330 108" aria-hidden="true">
+    <defs><clipPath id="b"><circle cx="54" cy="54" r="54"/></clipPath></defs>
+    <rect x="-190" y="26" width="160" height="9" rx="4.5" fill="#CCFF00" opacity=".3"/>
+    <rect x="-220" y="49.5" width="210" height="9" rx="4.5" fill="#CCFF00" opacity=".6"/>
+    <rect x="-150" y="73" width="120" height="9" rx="4.5" fill="#CCFF00" opacity=".3"/>
+    <circle cx="54" cy="54" r="54" fill="#CCFF00"/>
+    <g clip-path="url(#b)" fill="none" stroke="#111210" stroke-width="4.5">
+      <circle cx="-21.6" cy="54" r="51.75"/><circle cx="129.6" cy="54" r="51.75"/>
+    </g>
+  </svg>
+
+  <div class="abs logo">
+    <span class="word">смэш</span>
+    <svg width="22" height="22" viewBox="0 0 34 34" style="margin-bottom:0">
+      <defs><clipPath id="d"><circle cx="17" cy="17" r="17"/></clipPath></defs>
+      <circle cx="17" cy="17" r="17" fill="#CCFF00"/>
+      <g clip-path="url(#d)" fill="none" stroke="#111210" stroke-width="3"><circle cx="-6.8" cy="17" r="16"/><circle cx="40.8" cy="17" r="16"/></g>
+    </svg>
+  </div>
+
+  <h1 class="abs offer">Корт за<br><em>30</em> секунд</h1>
+  <p class="abs sub">Падел-корты Москвы<br>в Telegram</p>
+
+  <div class="abs sticker">Делим на 4</div>
+</body>
+</html>
